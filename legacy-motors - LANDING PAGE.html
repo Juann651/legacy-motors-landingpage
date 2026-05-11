@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Legacy Motors | Quem Somos — Vila Velha, ES</title>
+  <meta name="description"
+    content="Conheça a Legacy Motors: a concessionária premium de Vila Velha, ES. Nossa história, valores e o compromisso com cada cliente." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --black: #080808;
+      --white: #f5f4f0;
+      --gray: #9a9a9a;
+      --gray-light: #c0bdb5;
+      --line: rgba(255, 255, 255, 0.08);
+      --accent: #e8e0cc;
+      --gold: rgba(232, 224, 204, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    img {
+      display: block
+    }
+
+    /* CURSOR */
+    .cursor {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: var(--white);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      will-change: transform;
+      transition: width .3s ease, height .3s ease;
+    }
+
+    .cursor-ring {
+      position: fixed;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(245, 244, 240, .35);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      left: 0;
+      top: 0;
+      will-change: transform;
+      transition: width .3s ease, height .3s ease;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.8rem 4rem;
+      border-bottom: 1px solid transparent;
+      transition: all .4s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(8, 8, 8, .92);
+      backdrop-filter: blur(20px);
+      border-color: var(--line);
+      padding: 1.2rem 4rem;
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: .12em;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .logo-box {
+      background: var(--white);
+      color: var(--black);
+      padding: .15rem .5rem;
+      letter-spacing: .05em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem
+    }
+
+    .nav-links a {
+      font-size: .8rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      transition: color .25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--white)
+    }
+
+    .nav-cta {
+      background: var(--white);
+      color: var(--black);
+      padding: .65rem 1.4rem;
+      font-size: .75rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      font-weight: 500;
+      border-radius: 2px;
+      transition: opacity .25s;
+    }
+
+    .nav-cta:hover {
+      opacity: .85
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 4rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 70% at 80% 30%, rgba(255, 255, 255, .03) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 5% 90%, rgba(232, 224, 204, .04) 0%, transparent 55%);
+    }
+
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .022) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    /* Grande número de fundo decorativo */
+    .hero-year {
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-60%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(14rem, 30vw, 28rem);
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255, 255, 255, .04);
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -.02em;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 820px;
+    }
+
+    .hero-eyebrow {
+      font-size: .7rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      opacity: 0;
+      animation: fadeUp .8s .2s ease forwards;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gray);
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 11vw, 11rem);
+      line-height: .88;
+      letter-spacing: .02em;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp .9s .35s ease forwards;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(245, 244, 240, .22);
+    }
+
+    .hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 3rem;
+      opacity: 0;
+      animation: fadeUp .8s .55s ease forwards;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--gray);
+      max-width: 520px;
+    }
+
+    .hero-scroll {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .8rem;
+      color: var(--gray);
+      font-size: .65rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--gray), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+
+      0%,
+      100% {
+        opacity: .5
+      }
+
+      50% {
+        opacity: 1
+      }
+    }
+
+    /* MARQUEE */
+    .marquee-wrap {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      overflow: hidden;
+      margin-top: 5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      animation: marquee 26s linear infinite;
+      white-space: nowrap;
+    }
+
+    .marquee-item {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: .3em;
+      color: var(--gray);
+      padding: 0 3rem;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .marquee-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gray);
+      display: inline-block
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    /* SECTION COMUNS */
+    .section-tag {
+      font-size: .65rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gray);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-tag::before {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 1px;
+      background: var(--gray)
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 6vw, 6rem);
+      line-height: .95;
+      letter-spacing: .02em;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--black);
+      padding: 1rem 2.2rem;
+      font-size: .8rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      font-weight: 500;
+      border-radius: 2px;
+      transition: opacity .25s, transform .2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      opacity: .88
+    }
+
+    .btn-ghost {
+      border: 1px solid rgba(255, 255, 255, .2);
+      color: var(--white);
+      padding: 1rem 2.2rem;
+      font-size: .8rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      font-weight: 400;
+      border-radius: 2px;
+      transition: border-color .25s, transform .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: .7rem;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255, 255, 255, .5)
+    }
+
+    /* MANIFESTO */
+    .manifesto {
+      padding: 10rem 4rem;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 8rem;
+      align-items: start;
+    }
+
+    .manifesto-left {}
+
+    .manifesto-quote {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: .02em;
+      color: var(--accent);
+      margin-bottom: 3rem;
+    }
+
+    .manifesto-quote span {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(232, 224, 204, .35);
+    }
+
+    .manifesto-body {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--gray);
+      margin-bottom: 2.5rem;
+    }
+
+    .manifesto-right {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding-top: 1rem;
+    }
+
+    .manifesto-item {
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .manifesto-item:first-child {
+      border-top: 1px solid var(--line)
+    }
+
+    .manifesto-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255, 255, 255, .15);
+      letter-spacing: .05em;
+    }
+
+    .manifesto-item-title {
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-bottom: .6rem;
+      letter-spacing: .02em
+    }
+
+    .manifesto-item-desc {
+      font-size: .88rem;
+      color: var(--gray);
+      line-height: 1.7
+    }
+
+    /* NÚMEROS */
+    .numeros {
+      padding: 8rem 4rem;
+      border-top: 1px solid var(--line);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .numeros::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(ellipse 50% 80% at 50% 50%, rgba(232, 224, 204, .03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .numeros-header {
+      text-align: center;
+      margin-bottom: 6rem;
+    }
+
+    .numeros-header .section-tag {
+      justify-content: center
+    }
+
+    .numeros-header .section-tag::before {
+      display: none
+    }
+
+    .numeros-header .section-tag::after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 1px;
+      background: var(--gray)
+    }
+
+    .numeros-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      position: relative;
+      z-index: 1;
+    }
+
+    .numero-item {
+      background: var(--black);
+      padding: 3.5rem 2.5rem;
+      text-align: center;
+      transition: background .3s;
+    }
+
+    .numero-item:hover {
+      background: rgba(255, 255, 255, .025)
+    }
+
+    .numero-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4.5rem;
+      line-height: 1;
+      letter-spacing: .03em;
+      color: var(--accent);
+      margin-bottom: .5rem;
+    }
+
+    .numero-label {
+      font-size: .78rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    /* HISTÓRIA / LINHA DO TEMPO */
+    .historia {
+      padding: 10rem 4rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .historia-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: end;
+      margin-bottom: 7rem;
+    }
+
+    .historia-desc {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--gray);
+      padding-bottom: .5rem;
+    }
+
+    .timeline {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--line) 10%, var(--line) 90%, transparent);
+    }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 4rem;
+      padding: 3rem 0 3rem 3rem;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      transition: background .3s;
+    }
+
+    .tl-item:first-child {
+      border-top: 1px solid var(--line)
+    }
+
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 3.5rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--black);
+      border: 1px solid rgba(255, 255, 255, .25);
+      transition: background .3s, border-color .3s;
+    }
+
+    .tl-item:hover::before {
+      background: var(--accent);
+      border-color: var(--accent)
+    }
+
+    .tl-year {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: .08em;
+      color: var(--gray-light);
+      padding-top: .2rem;
+    }
+
+    .tl-title {
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-bottom: .6rem;
+      letter-spacing: .02em
+    }
+
+    .tl-desc {
+      font-size: .88rem;
+      color: var(--gray);
+      line-height: 1.7
+    }
+
+    /* EQUIPE / VALORES */
+    .valores {
+      padding: 8rem 4rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .valores-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 5rem;
+    }
+
+    .valores-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .valor-card {
+      border: 1px solid var(--line);
+      padding: 3rem 2.5rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, .015);
+      transition: border-color .3s, background .3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .valor-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(232, 224, 204, .3), transparent);
+      transform: scaleX(0);
+      transition: transform .4s ease;
+    }
+
+    .valor-card:hover {
+      border-color: rgba(255, 255, 255, .18);
+      background: rgba(255, 255, 255, .03)
+    }
+
+    .valor-card:hover::before {
+      transform: scaleX(1)
+    }
+
+    .valor-icon {
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .valor-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 1.5
+    }
+
+    .valor-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      letter-spacing: .02em
+    }
+
+    .valor-desc {
+      font-size: .88rem;
+      color: var(--gray);
+      line-height: 1.75
+    }
+
+    /* EQUIPE */
+    .equipe {
+      padding: 10rem 4rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .equipe-header {
+      margin-bottom: 6rem
+    }
+
+    .equipe-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .membro {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, .015);
+      transition: border-color .3s;
+    }
+
+    .membro:hover {
+      border-color: rgba(255, 255, 255, .18)
+    }
+
+    .membro-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      filter: grayscale(60%);
+      transition: filter .5s;
+    }
+
+    .membro:hover .membro-img {
+      filter: grayscale(20%)
+    }
+
+    .membro-body {
+      padding: 2rem 2rem 2.5rem;
+    }
+
+    .membro-cargo {
+      font-size: .65rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: .5rem;
+    }
+
+    .membro-nome {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: .6rem;
+      letter-spacing: .02em
+    }
+
+    .membro-bio {
+      font-size: .85rem;
+      color: var(--gray);
+      line-height: 1.65
+    }
+
+    /* DEPOIMENTOS */
+    .depoimentos {
+      padding: 8rem 4rem;
+      border-top: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .depoimentos-header {
+      margin-bottom: 5rem
+    }
+
+    .dep-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .dep-card {
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 2.5rem;
+      background: rgba(255, 255, 255, .015);
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      transition: border-color .3s;
+    }
+
+    .dep-card:hover {
+      border-color: rgba(255, 255, 255, .15)
+    }
+
+    .dep-stars {
+      display: flex;
+      gap: .3rem;
+    }
+
+    .dep-stars svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--accent)
+    }
+
+    .dep-text {
+      font-size: .95rem;
+      line-height: 1.8;
+      color: var(--gray-light);
+      font-style: italic;
+      flex: 1;
+    }
+
+    .dep-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .dep-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: .05em;
+      flex-shrink: 0;
+      color: var(--gray-light);
+    }
+
+    .dep-info {}
+
+    .dep-nome {
+      font-size: .9rem;
+      font-weight: 500;
+      margin-bottom: .15rem
+    }
+
+    .dep-cidade {
+      font-size: .75rem;
+      color: var(--gray);
+      letter-spacing: .08em
+    }
+
+    /* CTA FINAL */
+    .cta-final {
+      padding: 10rem 4rem;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(232, 224, 204, .04) 0%, transparent 70%);
+    }
+
+    .cta-final .section-tag {
+      justify-content: center
+    }
+
+    .cta-final .section-tag::before {
+      display: none
+    }
+
+    .cta-final .section-tag::after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 1px;
+      background: var(--gray)
+    }
+
+    .cta-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 9vw, 8.5rem);
+      line-height: .9;
+      letter-spacing: .02em;
+      margin-bottom: 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-title em {
+      font-style: normal;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(245, 244, 240, .2);
+    }
+
+    .cta-desc {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--gray);
+      max-width: 480px;
+      margin: 0 auto 3.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-actions .btn-ghost svg {
+      width: 18px;
+      height: 18px
+    }
+
+    /* CONTATO */
+    .contato-bar {
+      padding: 5rem 4rem;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contato-item {
+      background: var(--black);
+      padding: 3rem 2rem;
+      transition: background .3s;
+    }
+
+    .contato-item:hover {
+      background: rgba(255, 255, 255, .025)
+    }
+
+    .contato-label {
+      font-size: .65rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: .8rem;
+    }
+
+    .contato-value {
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: .02em
+    }
+
+    .contato-value a {
+      transition: opacity .2s
+    }
+
+    .contato-value a:hover {
+      opacity: .65
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 4rem 4rem 3rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-brand .logo {
+      margin-bottom: 1.2rem;
+      font-size: 1.4rem
+    }
+
+    .footer-brand p {
+      font-size: .82rem;
+      color: var(--gray);
+      line-height: 1.75;
+      max-width: 280px
+    }
+
+    .footer-col h4 {
+      font-size: .65rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: .85rem;
+      color: rgba(245, 244, 240, .6);
+      margin-bottom: .6rem;
+      transition: color .2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--white)
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
+      font-size: .75rem;
+      color: var(--gray);
+    }
+
+    /* ANIMAÇÕES */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .75s ease, transform .75s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .fade-in-delay-1 {
+      transition-delay: .1s
+    }
+
+    .fade-in-delay-2 {
+      transition-delay: .2s
+    }
+
+    .fade-in-delay-3 {
+      transition-delay: .3s
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1200px) {
+      .numeros-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .equipe-grid {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    @media(max-width:1024px) {
+
+      nav,
+      .hero,
+      .manifesto,
+      .numeros,
+      .historia,
+      .valores,
+      .equipe,
+      .depoimentos,
+      .cta-final {
+        padding-left: 2rem;
+        padding-right: 2rem
+      }
+
+      .contato-bar {
+        padding-left: 2rem;
+        padding-right: 2rem
+      }
+
+      footer {
+        padding-left: 2rem;
+        padding-right: 2rem
+      }
+
+      .manifesto {
+        grid-template-columns: 1fr;
+        gap: 5rem;
+        padding: 7rem 2rem
+      }
+
+      .historia-header {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        margin-bottom: 5rem
+      }
+
+      .valores-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .dep-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .contato-bar {
+        grid-template-columns: 1fr 1fr;
+        padding: 3rem 2rem
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem
+      }
+
+      .cta-final {
+        padding: 7rem 2rem
+      }
+    }
+
+    @media(max-width:768px) {
+      .equipe-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media(max-width:640px) {
+      nav {
+        padding: 1.4rem 1.5rem
+      }
+
+      nav.scrolled {
+        padding: 1rem 1.5rem
+      }
+
+      .nav-links {
+        display: none
+      }
+
+      .hero {
+        padding: 0 1.5rem 4rem
+      }
+
+      .hero-title {
+        font-size: 4.5rem
+      }
+
+      .hero-bottom {
+        flex-direction: column;
+        gap: 2rem
+      }
+
+      .hero-scroll {
+        display: none
+      }
+
+      .manifesto,
+      .numeros,
+      .historia,
+      .valores,
+      .equipe,
+      .depoimentos,
+      .cta-final {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem
+      }
+
+      .numeros-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .numero-item {
+        padding: 2rem 1rem
+      }
+
+      .numero-val {
+        font-size: 2.8rem
+      }
+
+      .numero-label {
+        font-size: .7rem
+      }
+
+      .tl-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding-left: 2.5rem
+      }
+
+      .valores-grid {
+        grid-template-columns: 1fr
+      }
+
+      .dep-grid {
+        grid-template-columns: 1fr
+      }
+
+      .contato-bar {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.5rem
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        padding-top: 1rem
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center
+      }
+
+      footer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="cursor" id="cur"></div>
+  <div class="cursor-ring" id="curRing"></div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="logo">
+      <span class="logo-box">LEGACY</span> MOTORS
+    </a>
+    <div class="nav-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#valores">Valores</a>
+      <a href="#equipe">Equipe</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <a href="https://wa.me/5527999999999?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20consultor%20da%20Legacy%20Motors."
+      target="_blank" class="nav-cta">WhatsApp</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-lines"></div>
+    <div class="hero-year">2019</div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Fundada em 2019 · Vila Velha, Espírito Santo</p>
+      <h1 class="hero-title">
+        MAIS DO QUE<br>
+        UM CARRO.<br>
+        <em>UMA ESCOLHA.</em>
+      </h1>
+      <div class="hero-bottom">
+        <p class="hero-desc">A Legacy Motors nasceu para mudar a forma como as pessoas compram veículos no Espírito
+          Santo. Aqui, cada negociação é uma relação — construída com transparência, respeito e cuidado.</p>
+        <div class="hero-scroll">
+          <div class="scroll-line"></div>
+          <span>Scroll</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <span class="marquee-item">LEGACY MOTORS <span class="marquee-dot"></span> DESDE 2019 <span
+            class="marquee-dot"></span> VILA VELHA ES <span class="marquee-dot"></span> TRANSPARÊNCIA <span
+            class="marquee-dot"></span> CURADORIA <span class="marquee-dot"></span> CONFIANÇA <span
+            class="marquee-dot"></span> ATENDIMENTO PREMIUM <span class="marquee-dot"></span> SEU PRÓXIMO CARRO <span
+            class="marquee-dot"></span></span>
+        <span class="marquee-item">LEGACY MOTORS <span class="marquee-dot"></span> DESDE 2019 <span
+            class="marquee-dot"></span> VILA VELHA ES <span class="marquee-dot"></span> TRANSPARÊNCIA <span
+            class="marquee-dot"></span> CURADORIA <span class="marquee-dot"></span> CONFIANÇA <span
+            class="marquee-dot"></span> ATENDIMENTO PREMIUM <span class="marquee-dot"></span> SEU PRÓXIMO CARRO <span
+            class="marquee-dot"></span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section class="manifesto" id="sobre">
+    <div class="manifesto-left fade-in">
+      <p class="section-tag">Quem somos</p>
+      <div class="manifesto-quote">
+        NASCEMOS PARA<br><span>SIMPLIFICAR</span><br>O QUE ERA<br>COMPLICADO.
+      </div>
+      <p class="manifesto-body">O mercado de veículos usados carregava um peso: desconfiança, burocracia, pressão. A
+        Legacy Motors surgiu como uma resposta direta a esse problema — reunindo uma curadoria rigorosa de veículos com
+        um processo de compra moderno, direto e humano.</p>
+      <p class="manifesto-body">Operamos em Vila Velha, mas atendemos todo o Espírito Santo. Nossa missão é entregar não
+        apenas um veículo — mas a segurança de saber que você fez a escolha certa.</p>
+    </div>
+    <div class="manifesto-right fade-in fade-in-delay-2">
+      <div class="manifesto-item">
+        <div class="manifesto-num">01</div>
+        <div>
+          <p class="manifesto-item-title">Curadoria criteriosa</p>
+          <p class="manifesto-item-desc">Cada veículo passa por inspeção mecânica, verificação de histórico e análise
+            documental antes de entrar no nosso portfólio.</p>
+        </div>
+      </div>
+      <div class="manifesto-item">
+        <div class="manifesto-num">02</div>
+        <div>
+          <p class="manifesto-item-title">Atendimento via WhatsApp</p>
+          <p class="manifesto-item-desc">Da primeira pergunta ao fechamento, tudo acontece de forma fluida pelo WhatsApp
+            — sem ligações frias, sem pressão, no seu tempo.</p>
+        </div>
+      </div>
+      <div class="manifesto-item">
+        <div class="manifesto-num">03</div>
+        <div>
+          <p class="manifesto-item-title">Preços transparentes</p>
+          <p class="manifesto-item-desc">O preço que você vê é o preço que você paga. Sem taxas escondidas, sem
+            surpresas no final da negociação.</p>
+        </div>
+      </div>
+      <div class="manifesto-item">
+        <div class="manifesto-num">04</div>
+        <div>
+          <p class="manifesto-item-title">Pós-venda presente</p>
+          <p class="manifesto-item-desc">Nosso relacionamento não termina na assinatura. Estamos disponíveis para
+            suporte e dúvidas mesmo após a entrega das chaves.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NÚMEROS -->
+  <section class="numeros">
+    <div class="numeros-header fade-in">
+      <p class="section-tag">Legacy em números</p>
+      <h2 class="section-title">A NOSSA HISTÓRIA<br>EM DADOS</h2>
+    </div>
+    <div class="numeros-grid fade-in fade-in-delay-1">
+      <div class="numero-item">
+        <div class="numero-val">+600</div>
+        <div class="numero-label">Veículos<br>vendidos</div>
+      </div>
+      <div class="numero-item">
+        <div class="numero-val">98%</div>
+        <div class="numero-label">Clientes<br>satisfeitos</div>
+      </div>
+      <div class="numero-item">
+        <div class="numero-val">6 anos</div>
+        <div class="numero-label">De atuação<br>no mercado</div>
+      </div>
+      <div class="numero-item">
+        <div class="numero-val">100%</div>
+        <div class="numero-label">Processos<br>digitais</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTÓRIA -->
+  <section class="historia" id="historia">
+    <div class="historia-header">
+      <div class="fade-in">
+        <p class="section-tag">Nossa trajetória</p>
+        <h2 class="section-title">COMO CHEGAMOS<br>AQUI</h2>
+      </div>
+      <p class="historia-desc fade-in fade-in-delay-1">Desde a fundação, a Legacy cresceu a partir de um princípio
+        simples: tratar cada cliente como gostaríamos de ser tratados. Cada etapa da nossa história reflete esse
+        compromisso.</p>
+    </div>
+    <div class="timeline fade-in">
+      <div class="tl-item">
+        <div class="tl-year">2019</div>
+        <div>
+          <p class="tl-title">Fundação em Vila Velha</p>
+          <p class="tl-desc">A Legacy Motors abre as portas com um portfólio inicial de 12 veículos selecionados e um
+            time de três pessoas comprometidas com um atendimento diferente do mercado.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2020</div>
+        <div>
+          <p class="tl-title">Atendimento 100% digital</p>
+          <p class="tl-desc">Diante do contexto pandêmico, a Legacy foi uma das primeiras revendas do ES a migrar todo o
+            processo de compra para o WhatsApp — e nunca mais voltou atrás.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2022</div>
+        <div>
+          <p class="tl-title">100 vendas em um mês</p>
+          <p class="tl-desc">Pela primeira vez, atingimos a marca de 100 negociações concluídas em um único mês — um
+            marco que confirmou a confiança crescente dos clientes capixabas.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2024</div>
+        <div>
+          <p class="tl-title">Expansão do portfólio</p>
+          <p class="tl-desc">Incorporamos veículos elétricos e híbridos ao catálogo, acompanhando a demanda crescente
+            por mobilidade sustentável no estado.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Hoje</div>
+        <div>
+          <p class="tl-title">+600 famílias atendidas</p>
+          <p class="tl-desc">Com mais de 600 veículos vendidos e um NPS acima de 90, a Legacy segue crescendo — sem
+            abrir mão do atendimento próximo que sempre nos definiu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALORES -->
+  <section class="valores" id="valores">
+    <div class="valores-header fade-in">
+      <div>
+        <p class="section-tag">O que nos move</p>
+        <h2 class="section-title">NOSSOS VALORES</h2>
+      </div>
+      <a href="https://wa.me/5527999999999" target="_blank" class="btn-ghost">Falar conosco</a>
+    </div>
+    <div class="valores-grid">
+      <div class="valor-card fade-in">
+        <div class="valor-icon">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+          </svg>
+        </div>
+        <p class="valor-title">Integridade</p>
+        <p class="valor-desc">Não vendemos o que não acreditamos. Cada veículo que entra no nosso portfólio passa por
+          uma triagem honesta — se não compraria para a minha família, não ofereço para a sua.</p>
+      </div>
+      <div class="valor-card fade-in fade-in-delay-1">
+        <div class="valor-icon">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </div>
+        <p class="valor-title">Pessoas em primeiro lugar</p>
+        <p class="valor-desc">O nosso negócio existe por causa das pessoas, não apesar delas. Cada interação é tratada
+          com respeito genuíno — independente do veículo ou do orçamento.</p>
+      </div>
+      <div class="valor-card fade-in fade-in-delay-2">
+        <div class="valor-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <p class="valor-title">Agilidade com qualidade</p>
+        <p class="valor-desc">Acreditamos que processo rápido e processo cuidadoso não são opostos. A tecnologia existe
+          para agilizar — não para substituir a atenção ao detalhe.</p>
+      </div>
+      <div class="valor-card fade-in">
+        <div class="valor-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path
+              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+        </div>
+        <p class="valor-title">Transparência total</p>
+        <p class="valor-desc">O cliente tem direito a saber tudo: histórico do veículo, condição real, preço justo. Nada
+          fica "nos detalhes" — cada informação é compartilhada proativamente.</p>
+      </div>
+      <div class="valor-card fade-in fade-in-delay-1">
+        <div class="valor-icon">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+        </div>
+        <p class="valor-title">Comprometimento</p>
+        <p class="valor-desc">Quando dizemos que vamos ligar de volta, ligamos. Quando prometemos um prazo, cumprimos. O
+          compromisso com o cliente não tem hora nem dia.</p>
+      </div>
+      <div class="valor-card fade-in fade-in-delay-2">
+        <div class="valor-icon">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 3v1m0 16v1m-8.66-9H4m16 0h.66M6.34 6.34l-.7-.7m12.72 12.72l-.7-.7M6.34 17.66l-.7.7m12.72-12.72l-.7.7M12 8a4 4 0 100 8 4 4 0 000-8z" />
+          </svg>
+        </div>
+        <p class="valor-title">Inovação contínua</p>
+        <p class="valor-desc">O mercado muda, o cliente evolui. A Legacy investe constantemente em novos processos e
+          tecnologias para garantir que a experiência de compra seja sempre melhor.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPE -->
+  <section class="equipe" id="equipe">
+    <div class="equipe-header fade-in">
+      <p class="section-tag">Quem faz acontecer</p>
+      <h2 class="section-title">NOSSA EQUIPE</h2>
+    </div>
+    <div class="equipe-grid">
+      <div class="membro fade-in">
+        <img class="membro-img"
+          src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80"
+          alt="Rafael Mendes" />
+        <div class="membro-body">
+          <p class="membro-cargo">Fundador & CEO</p>
+          <p class="membro-nome">Rafael Mendes</p>
+          <p class="membro-bio">15 anos no mercado automotivo capixaba. Fundou a Legacy com a missão de transformar a
+            experiência de compra de veículos no estado.</p>
+        </div>
+      </div>
+      <div class="membro fade-in fade-in-delay-1">
+        <img class="membro-img"
+          src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80"
+          alt="Camila Torres" />
+        <div class="membro-body">
+          <p class="membro-cargo">Diretora Comercial</p>
+          <p class="membro-nome">Camila Torres</p>
+          <p class="membro-bio">Especialista em atendimento consultivo. Responsável por estruturar o processo de vendas
+            via WhatsApp que se tornou referência na região.</p>
+        </div>
+      </div>
+      <div class="membro fade-in fade-in-delay-2">
+        <img class="membro-img"
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"
+          alt="Lucas Andrade" />
+        <div class="membro-body">
+          <p class="membro-cargo">Inspetor Técnico Chefe</p>
+          <p class="membro-nome">Lucas Andrade</p>
+          <p class="membro-bio">Mecânico com 12 anos de experiência. Responsável pela curadoria técnica de cada veículo
+            que entra no portfólio da Legacy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="depoimentos">
+    <div class="depoimentos-header fade-in">
+      <p class="section-tag">O que nossos clientes dizem</p>
+      <h2 class="section-title">QUEM JÁ CONFIOU<br>NA LEGACY</h2>
+    </div>
+    <div class="dep-grid">
+      <div class="dep-card fade-in">
+        <div class="dep-stars">
+          <svg viewBox="0 0 20 20">
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg viewBox="0 0 20 20">
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg viewBox="0 0 20 20">
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg viewBox="0 0 20 20">
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg viewBox="0 0 20 20">
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+        </div>
+        <p class="dep-text">"Nunca pensei que comprar um carro poderia ser tão tranquilo. Tudo pelo WhatsApp, sem
+          pressão, com todas as informações na mão. A Legacy mudou minha visão sobre revendas."</p>
+        <div class="dep-author">
+          <div class="dep-avatar">FM</div>
+          <div class="dep-info">
+            <p class="dep-nome">Fernando Mota</p>
+            <p class="dep-cidade">Vitória, ES · Comprou um Corolla XEI</p>
+          </div>
+        </div>
+      </div>
+      <div class="dep-card fade-in fade-in-delay-1">
+        <div class="dep-stars">
+          <svg viewBox="0 0 20 20">
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg viewBox="0 0 20 20">
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg viewBox="0 0 20 20">
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg viewBox="0 0 20 20">
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg viewBox="0 0 20 20">
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+        </div>
+        <p class="dep-text">"O Lucas, responsável pela inspeção técnica, me explicou cada detalhe do veículo que eu
+          estava comprando. Essa transparência não encontrei em lugar nenhum. Indico de olhos fechados."</p>
+        <div class="dep-author">
+          <div class="dep-avatar">AS</div>
+          <div class="dep-info">
+            <p class="dep-nome">Ana Silveira</p>
+            <p class="dep-cidade">Vila Velha, ES · Comprou um Jeep Compass</p>
+          </div>
+        </div>
+      </div>
+      <div class="dep-card fade-in fade-in-delay-2">
+        <div class="dep-stars">
+          <svg viewBox="0 0 20 20">
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg viewBox="0 0 20 20">
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg viewBox="0 0 20 20">
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg viewBox="0 0 20 20">
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <svg viewBox="0 0 20 20">
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+        </div>
+        <p class="dep-text">"Terceira vez comprando na Legacy. Já sou cliente fiel. O atendimento da Camila é impecável
+          — ela entende o que você precisa e não empurra o que você não quer. Isso vale muito."</p>
+        <div class="dep-author">
+          <div class="dep-avatar">PO</div>
+          <div class="dep-info">
+            <p class="dep-nome">Pedro Oliveira</p>
+            <p class="dep-cidade">Serra, ES · Cliente desde 2020</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final" id="contato">
+    <div class="cta-bg"></div>
+    <p class="section-tag">Próximo passo</p>
+    <h2 class="cta-title">
+      PRONTO PARA<br>
+      <em>ENCONTRAR</em><br>
+      SEU CARRO?
+    </h2>
+    <p class="cta-desc">Fale com um dos nossos consultores agora pelo WhatsApp. Sem pressão, sem burocracia — só o carro
+      certo para você.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/5527999999999?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20consultor%20da%20Legacy%20Motors."
+        target="_blank" class="btn-primary">Falar pelo WhatsApp</a>
+      <a href="mailto:legacymotors@gmail.com" class="btn-ghost">Enviar e-mail</a>
+    </div>
+  </section>
+
+  <!-- CONTATO BAR -->
+  <div class="contato-bar">
+    <div class="contato-item">
+      <p class="contato-label">WhatsApp</p>
+      <p class="contato-value"><a href="https://wa.me/5527999999999" target="_blank">(27) 99999-9999</a></p>
+    </div>
+    <div class="contato-item">
+      <p class="contato-label">E-mail</p>
+      <p class="contato-value"><a href="mailto:legacymotors@gmail.com">legacymotors@gmail.com</a></p>
+    </div>
+    <div class="contato-item">
+      <p class="contato-label">Instagram</p>
+      <p class="contato-value"><a href="https://instagram.com/legacymotors" target="_blank">@legacymotors</a></p>
+    </div>
+    <div class="contato-item">
+      <p class="contato-label">Endereço</p>
+      <p class="contato-value">Vila Velha, Espírito Santo</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo"><span class="logo-box">LEGACY</span> MOTORS</div>
+        <p>Concessionária premium em Vila Velha, Espírito Santo. Fundada em 2019 com a missão de tornar a compra de
+          veículos mais simples, segura e humana.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <a href="#sobre">Sobre nós</a>
+        <a href="#valores">Nossos valores</a>
+        <a href="#equipe">A equipe</a>
+        <a href="#contato">Contato</a>
+      </div>
+      <div class="footer-col">
+        <h4>Redes sociais</h4>
+        <a href="https://instagram.com/legacymotors" target="_blank">Instagram</a>
+        <a href="https://wa.me/5527999999999" target="_blank">WhatsApp</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Política de privacidade</a>
+        <a href="#">Termos de uso</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Legacy Motors. Todos os direitos reservados.</span>
+      <span>Vila Velha · Espírito Santo · Brasil</span>
+    </div>
+  </footer>
+
+  <script>
+    // CURSOR
+    const cur = document.getElementById('cur');
+    const curRing = document.getElementById('curRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cur.style.transform = 'translate(' + (mx - 5) + 'px,' + (my - 5) + 'px)';
+    }, { passive: true });
+    function animRing() {
+      rx += (mx - rx) * .12; ry += (my - ry) * .12;
+      curRing.style.transform = 'translate(' + (rx - 18) + 'px,' + (ry - 18) + 'px)';
+      requestAnimationFrame(animRing);
+    }
+    animRing();
+    document.querySelectorAll('a,button,.valor-card,.membro,.dep-card,.tl-item').forEach(el => {
+      el.addEventListener('mouseenter', () => { cur.style.width = '6px'; cur.style.height = '6px'; curRing.style.width = '52px'; curRing.style.height = '52px'; });
+      el.addEventListener('mouseleave', () => { cur.style.width = '10px'; cur.style.height = '10px'; curRing.style.width = '36px'; curRing.style.height = '36px'; });
+    });
+
+    // NAV SCROLL
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+
+    // FADE IN
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: .1 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+
+  </script>
+</body>
+
+</html>
